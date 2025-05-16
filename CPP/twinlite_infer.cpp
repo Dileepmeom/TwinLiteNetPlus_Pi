@@ -31,7 +31,14 @@ int main(int argc, char* argv[]) {
     // Initialize ONNX Runtime (CPU)
     Ort::Env env(ORT_LOGGING_LEVEL_WARNING, "TwinLite");
     Ort::SessionOptions opts;
-    opts.SetIntraOpNumThreads(1);
+    opts.SetIntraOpNumThreads(4);
+    //opts.SetIntraOpNumThreads(1);
+    
+    // ** Enable XNNPACK EP ** //
+    //Ort::SessionOptions::XnnpackProviderOptions xnn_opts;
+    //xnn_opts.numThreads = 3;
+    //opts.AppendExecutionProvider_Xnnpack(xnn_opts);
+    
     opts.SetGraphOptimizationLevel(GraphOptimizationLevel::ORT_ENABLE_ALL);
     Ort::Session session(env, model_path, opts);
     Ort::AllocatorWithDefaultOptions allocator;

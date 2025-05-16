@@ -2,6 +2,9 @@
 
 ## Build Instructions
 
+## to use latest cmake if needed
+export PATH=$HOME/Downloads/cmake-4.0.2-linux-aarch64/bin:$PATH
+
 1. Navigate to the project directory and create a build folder:
    ```bash
    mkdir build && cd build
